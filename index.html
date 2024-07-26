@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <section id="nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand font-weight-bold" href="#" style="color: yellow;">BANK</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Net Banking</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Predictions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    
+    <form action="{{ url_for('predict') }}" method="post">
+        <h1>Enter the Information Below and find if a Customer will Churn out or not</h1>
+        <div class="contentform">
+            <div class="leftcontact">
+                <div class="form-group">
+                    <p>Credit Score<span>*</span></p>
+                    <input name="CreditScore" type="number" required>
+                </div>
+                <div class="form-group">
+                    <p>Age <span>*</span></p>
+                    <input name="Age" type="number" required>
+                </div>
+                <!-- Repeat for other fields -->
+            </div>
+            <div class="rightcontact">
+                <div class="form-group">
+                    <p>Location: <span>*</span></p>
+                    <select name="Geography" required>
+                        <option value="Germany">Germany</option>
+                        <option value="Spain">Spain</option>
+                        <option value="France">France</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p>Gender: <span>*</span></p>
+                    <select name="Gender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-lg btn-info">Predict whether the Customer will leave the bank or not?</button>
+    </form>
+    <h3 class="alert alert-primary text-center" role="alert">{{ prediction_text }}</h3>
+</body>
+</html>
